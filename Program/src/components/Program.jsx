@@ -9,7 +9,7 @@ const Program = () => {
     fetch("https://api.ts4u.us/api/course/get?type=program")
       .then(response => response.json())
       .then(data => {
-        setPrograms([...programs, data.courses]);
+        setPrograms(data.courses);
         console.log('this is the data', data);
       })
       .catch(error => {
@@ -26,9 +26,9 @@ const Program = () => {
             <ul>
                 {
                     programs.map((item, i) => <li key={i}>
-                        <h2>{item[i].title}</h2> <br/>
-                        <h3> Instructor: {item[i].instructor.name}</h3> <br/>
-                        <p>{item[i].meta.description}</p>
+                        <h2>{item?.title}</h2> <br/>
+                        <h3> Instructor: {item?.instructor?.name}</h3> <br/>
+                        <p>{item?.meta?.description}</p>
                     </li>)
                 }
             </ul>
